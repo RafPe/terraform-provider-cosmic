@@ -861,8 +861,9 @@ func (s *NetworkOfferingService) GetNetworkOfferingByID(id string, opts ...Optio
 
 // Lists all available network offerings.
 func (s *NetworkOfferingService) ListNetworkOfferings(p *ListNetworkOfferingsParams) (*ListNetworkOfferingsResponse, error) {
-	var r, l ListNetworkOfferingsResponse
+	var r ListNetworkOfferingsResponse
 	for page := 2; ; page++ {
+		var l ListNetworkOfferingsResponse
 		resp, err := s.cs.newRequest("listNetworkOfferings", p.toURLValues())
 		if err != nil {
 			return nil, err

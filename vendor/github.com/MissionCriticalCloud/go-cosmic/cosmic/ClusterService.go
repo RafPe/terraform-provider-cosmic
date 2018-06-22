@@ -679,8 +679,9 @@ func (s *ClusterService) GetClusterByID(id string, opts ...OptionFunc) (*Cluster
 
 // Lists clusters.
 func (s *ClusterService) ListClusters(p *ListClustersParams) (*ListClustersResponse, error) {
-	var r, l ListClustersResponse
+	var r ListClustersResponse
 	for page := 2; ; page++ {
+		var l ListClustersResponse
 		resp, err := s.cs.newRequest("listClusters", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -894,8 +895,9 @@ func (s *ClusterService) NewListDedicatedClustersParams() *ListDedicatedClusters
 
 // Lists dedicated clusters.
 func (s *ClusterService) ListDedicatedClusters(p *ListDedicatedClustersParams) (*ListDedicatedClustersResponse, error) {
-	var r, l ListDedicatedClustersResponse
+	var r ListDedicatedClustersResponse
 	for page := 2; ; page++ {
+		var l ListDedicatedClustersResponse
 		resp, err := s.cs.newRequest("listDedicatedClusters", p.toURLValues())
 		if err != nil {
 			return nil, err

@@ -82,7 +82,7 @@ func resourceCosmicSSHKeyPairCreate(d *schema.ResourceData, meta interface{}) er
 		d.Set("private_key", r.Privatekey)
 	}
 
-	log.Printf("[DEBUG] Key pair successfully generated at Cloudstack")
+	log.Printf("[DEBUG] Key pair successfully generated at Cosmic")
 	d.SetId(name)
 
 	return resourceCosmicSSHKeyPairRead(d, meta)

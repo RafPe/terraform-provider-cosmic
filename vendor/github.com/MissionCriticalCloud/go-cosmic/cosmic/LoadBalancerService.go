@@ -378,8 +378,9 @@ func (s *LoadBalancerService) GetLBHealthCheckPolicyByID(id string, opts ...Opti
 
 // Lists load balancer health check policies.
 func (s *LoadBalancerService) ListLBHealthCheckPolicies(p *ListLBHealthCheckPoliciesParams) (*ListLBHealthCheckPoliciesResponse, error) {
-	var r, l ListLBHealthCheckPoliciesResponse
+	var r ListLBHealthCheckPoliciesResponse
 	for page := 2; ; page++ {
+		var l ListLBHealthCheckPoliciesResponse
 		resp, err := s.cs.newRequest("listLBHealthCheckPolicies", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -876,8 +877,9 @@ func (s *LoadBalancerService) GetLBStickinessPolicyByID(id string, opts ...Optio
 
 // Lists load balancer stickiness policies.
 func (s *LoadBalancerService) ListLBStickinessPolicies(p *ListLBStickinessPoliciesParams) (*ListLBStickinessPoliciesResponse, error) {
-	var r, l ListLBStickinessPoliciesResponse
+	var r ListLBStickinessPoliciesResponse
 	for page := 2; ; page++ {
+		var l ListLBStickinessPoliciesResponse
 		resp, err := s.cs.newRequest("listLBStickinessPolicies", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1865,8 +1867,9 @@ func (s *LoadBalancerService) GetLoadBalancerRuleInstanceByID(id string, opts ..
 
 // List all virtual machine instances that are assigned to a load balancer rule.
 func (s *LoadBalancerService) ListLoadBalancerRuleInstances(p *ListLoadBalancerRuleInstancesParams) (*ListLoadBalancerRuleInstancesResponse, error) {
-	var r, l ListLoadBalancerRuleInstancesResponse
+	var r ListLoadBalancerRuleInstancesResponse
 	for page := 2; ; page++ {
+		var l ListLoadBalancerRuleInstancesResponse
 		resp, err := s.cs.newRequest("listLoadBalancerRuleInstances", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -2175,8 +2178,9 @@ func (s *LoadBalancerService) GetLoadBalancerRuleByID(id string, opts ...OptionF
 
 // Lists load balancer rules.
 func (s *LoadBalancerService) ListLoadBalancerRules(p *ListLoadBalancerRulesParams) (*ListLoadBalancerRulesResponse, error) {
-	var r, l ListLoadBalancerRulesResponse
+	var r ListLoadBalancerRulesResponse
 	for page := 2; ; page++ {
+		var l ListLoadBalancerRulesResponse
 		resp, err := s.cs.newRequest("listLoadBalancerRules", p.toURLValues())
 		if err != nil {
 			return nil, err

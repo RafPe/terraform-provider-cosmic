@@ -572,8 +572,9 @@ func (s *AuthenticationService) NewListLdapConfigurationsParams() *ListLdapConfi
 
 // Lists all LDAP configurations
 func (s *AuthenticationService) ListLdapConfigurations(p *ListLdapConfigurationsParams) (*ListLdapConfigurationsResponse, error) {
-	var r, l ListLdapConfigurationsResponse
+	var r ListLdapConfigurationsResponse
 	for page := 2; ; page++ {
+		var l ListLdapConfigurationsResponse
 		resp, err := s.cs.newRequest("listLdapConfigurations", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -811,8 +812,9 @@ func (s *AuthenticationService) NewListLdapUsersParams() *ListLdapUsersParams {
 
 // Lists all LDAP Users
 func (s *AuthenticationService) ListLdapUsers(p *ListLdapUsersParams) (*ListLdapUsersResponse, error) {
-	var r, l ListLdapUsersResponse
+	var r ListLdapUsersResponse
 	for page := 2; ; page++ {
+		var l ListLdapUsersResponse
 		resp, err := s.cs.newRequest("listLdapUsers", p.toURLValues())
 		if err != nil {
 			return nil, err

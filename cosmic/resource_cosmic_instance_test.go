@@ -61,7 +61,7 @@ func TestAccCosmicInstance_update(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"cosmic_instance.foobar", "display_name", "terraform-updated"),
 					resource.TestCheckResourceAttr(
-						"cosmic_instance.foobar", "service_offering", CLOUDSTACK_SERVICE_OFFERING_2),
+						"cosmic_instance.foobar", "service_offering", COSMIC_SERVICE_OFFERING_2),
 				),
 			},
 		},
@@ -82,7 +82,7 @@ func TestAccCosmicInstance_fixedIP(t *testing.T) {
 					testAccCheckCosmicInstanceExists(
 						"cosmic_instance.foobar", &instance),
 					resource.TestCheckResourceAttr(
-						"cosmic_instance.foobar", "ip_address", CLOUDSTACK_NETWORK_1_IPADDRESS1),
+						"cosmic_instance.foobar", "ip_address", COSMIC_NETWORK_1_IPADDRESS1),
 				),
 			},
 		},
@@ -124,7 +124,7 @@ func TestAccCosmicInstance_project(t *testing.T) {
 					testAccCheckCosmicInstanceExists(
 						"cosmic_instance.foobar", &instance),
 					resource.TestCheckResourceAttr(
-						"cosmic_instance.foobar", "project", CLOUDSTACK_PROJECT_NAME),
+						"cosmic_instance.foobar", "project", COSMIC_PROJECT_NAME),
 				),
 			},
 		},
@@ -172,15 +172,15 @@ func testAccCheckCosmicInstanceAttributes(
 			return fmt.Errorf("Bad display name: %s", instance.Displayname)
 		}
 
-		if instance.Serviceofferingname != CLOUDSTACK_SERVICE_OFFERING_1 {
+		if instance.Serviceofferingname != COSMIC_SERVICE_OFFERING_1 {
 			return fmt.Errorf("Bad service offering: %s", instance.Serviceofferingname)
 		}
 
-		if instance.Templatename != CLOUDSTACK_TEMPLATE {
+		if instance.Templatename != COSMIC_TEMPLATE {
 			return fmt.Errorf("Bad template: %s", instance.Templatename)
 		}
 
-		if instance.Nic[0].Networkid != CLOUDSTACK_NETWORK_1 {
+		if instance.Nic[0].Networkid != COSMIC_NETWORK_1 {
 			return fmt.Errorf("Bad network ID: %s", instance.Nic[0].Networkid)
 		}
 
@@ -200,7 +200,7 @@ func testAccCheckCosmicInstanceRenamedAndResized(
 			return fmt.Errorf("Bad display name: %s", instance.Displayname)
 		}
 
-		if instance.Serviceofferingname != CLOUDSTACK_SERVICE_OFFERING_2 {
+		if instance.Serviceofferingname != COSMIC_SERVICE_OFFERING_2 {
 			return fmt.Errorf("Bad service offering: %s", instance.Serviceofferingname)
 		}
 
@@ -240,10 +240,10 @@ resource "cosmic_instance" "foobar" {
   user_data = "foobar\nfoo\nbar"
   expunge = true
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE)
 
 var testAccCosmicInstance_renameAndResize = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -256,10 +256,10 @@ resource "cosmic_instance" "foobar" {
   user_data = "foobar\nfoo\nbar"
   expunge = true
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_2,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE)
+	COSMIC_SERVICE_OFFERING_2,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE)
 
 var testAccCosmicInstance_fixedIP = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -272,11 +272,11 @@ resource "cosmic_instance" "foobar" {
   zone = "%s"
   expunge = true
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_NETWORK_1_IPADDRESS1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_NETWORK_1_IPADDRESS1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE)
 
 var testAccCosmicInstance_keyPair = fmt.Sprintf(`
 resource "cosmic_ssh_keypair" "foo" {
@@ -294,11 +294,11 @@ resource "cosmic_instance" "foobar" {
 	keypair = "${cosmic_ssh_keypair.foo.name}"
   expunge = true
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_NETWORK_1_IPADDRESS1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_NETWORK_1_IPADDRESS1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE)
 
 var testAccCosmicInstance_project = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -311,8 +311,8 @@ resource "cosmic_instance" "foobar" {
   zone = "%s"
   expunge = true
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_PROJECT_NETWORK,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_PROJECT_NAME,
-	CLOUDSTACK_ZONE)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_PROJECT_NETWORK,
+	COSMIC_TEMPLATE,
+	COSMIC_PROJECT_NAME,
+	COSMIC_ZONE)

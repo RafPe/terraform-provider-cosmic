@@ -20,56 +20,56 @@ func resourceCosmicInstance() *schema.Resource {
 		Delete: resourceCosmicInstanceDelete,
 
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 			},
 
-			"display_name": &schema.Schema{
+			"display_name": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 			},
 
-			"service_offering": &schema.Schema{
+			"service_offering": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
 
-			"network_id": &schema.Schema{
+			"network_id": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 				ForceNew: true,
 			},
 
-			"ip_address": &schema.Schema{
+			"ip_address": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 				ForceNew: true,
 			},
 
-			"template": &schema.Schema{
+			"template": {
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
 			},
 
-			"root_disk_size": &schema.Schema{
+			"root_disk_size": {
 				Type:     schema.TypeInt,
 				Optional: true,
 				ForceNew: true,
 			},
 
-			"group": &schema.Schema{
+			"group": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 			},
 
-			"affinity_group_ids": &schema.Schema{
+			"affinity_group_ids": {
 				Type:          schema.TypeSet,
 				Optional:      true,
 				Elem:          &schema.Schema{Type: schema.TypeString},
@@ -77,7 +77,7 @@ func resourceCosmicInstance() *schema.Resource {
 				ConflictsWith: []string{"affinity_group_names"},
 			},
 
-			"affinity_group_names": &schema.Schema{
+			"affinity_group_names": {
 				Type:          schema.TypeSet,
 				Optional:      true,
 				Elem:          &schema.Schema{Type: schema.TypeString},
@@ -85,7 +85,7 @@ func resourceCosmicInstance() *schema.Resource {
 				ConflictsWith: []string{"affinity_group_ids"},
 			},
 
-			"security_group_ids": &schema.Schema{
+			"security_group_ids": {
 				Type:          schema.TypeSet,
 				Optional:      true,
 				ForceNew:      true,
@@ -94,7 +94,7 @@ func resourceCosmicInstance() *schema.Resource {
 				ConflictsWith: []string{"security_group_names"},
 			},
 
-			"security_group_names": &schema.Schema{
+			"security_group_names": {
 				Type:          schema.TypeSet,
 				Optional:      true,
 				ForceNew:      true,
@@ -103,25 +103,25 @@ func resourceCosmicInstance() *schema.Resource {
 				ConflictsWith: []string{"security_group_ids"},
 			},
 
-			"project": &schema.Schema{
+			"project": {
 				Type:     schema.TypeString,
 				Optional: true,
 				Computed: true,
 				ForceNew: true,
 			},
 
-			"zone": &schema.Schema{
+			"zone": {
 				Type:     schema.TypeString,
 				Required: true,
 				ForceNew: true,
 			},
 
-			"keypair": &schema.Schema{
+			"keypair": {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
 
-			"user_data": &schema.Schema{
+			"user_data": {
 				Type:     schema.TypeString,
 				Optional: true,
 				StateFunc: func(v interface{}) string {
@@ -135,7 +135,12 @@ func resourceCosmicInstance() *schema.Resource {
 				},
 			},
 
-			"expunge": &schema.Schema{
+			"optimisefor": {
+				Type:     schema.TypeString,
+				Optional: true,
+			},
+
+			"expunge": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
@@ -225,24 +230,6 @@ func resourceCosmicInstanceCreate(d *schema.ResourceData, meta interface{}) erro
 		p.SetAffinitygroupnames(groups)
 	}
 
-	// If there are security group IDs supplied, add them to the parameter struct
-	if sgIDs := d.Get("security_group_ids").(*schema.Set); sgIDs.Len() > 0 {
-		var groups []string
-		for _, group := range sgIDs.List() {
-			groups = append(groups, group.(string))
-		}
-		p.SetSecuritygroupids(groups)
-	}
-
-	// If there are security group names supplied, add them to the parameter struct
-	if sgNames := d.Get("security_group_names").(*schema.Set); sgNames.Len() > 0 {
-		var groups []string
-		for _, group := range sgNames.List() {
-			groups = append(groups, group.(string))
-		}
-		p.SetSecuritygroupnames(groups)
-	}
-
 	// If there is a project supplied, we retrieve and set the project id
 	if err := setProjectid(p, cs, d); err != nil {
 		return err
@@ -325,22 +312,6 @@ func resourceCosmicInstanceRead(d *schema.ResourceData, meta interface{}) error 
 		d.Set("affinity_group_names", groups)
 	}
 
-	if _, ok := d.GetOk("security_group_ids"); ok {
-		groups := &schema.Set{F: schema.HashString}
-		for _, group := range vm.Securitygroup {
-			groups.Add(group.Id)
-		}
-		d.Set("security_group_ids", groups)
-	}
-
-	if _, ok := d.GetOk("security_group_names"); ok {
-		groups := &schema.Set{F: schema.HashString}
-		for _, group := range vm.Securitygroup {
-			groups.Add(group.Name)
-		}
-		d.Set("security_group_names", groups)
-	}
-
 	setValueOrID(d, "service_offering", vm.Serviceofferingname, vm.Serviceofferingid)
 	setValueOrID(d, "template", vm.Templatename, vm.Templateid)
 	setValueOrID(d, "project", vm.Project, vm.Projectid)
@@ -397,7 +368,8 @@ func resourceCosmicInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 
 	// Attributes that require reboot to update
 	if d.HasChange("name") || d.HasChange("service_offering") || d.HasChange("affinity_group_ids") ||
-		d.HasChange("affinity_group_names") || d.HasChange("keypair") || d.HasChange("user_data") {
+		d.HasChange("affinity_group_names") || d.HasChange("keypair") || d.HasChange("user_data") ||
+		d.HasChange("optimisefor") {
 		// Before we can actually make these changes, the virtual machine must be stopped
 		_, err := cs.VirtualMachine.StopVirtualMachine(
 			cs.VirtualMachine.NewStopVirtualMachineParams(d.Id()))
@@ -451,7 +423,7 @@ func resourceCosmicInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 		// Check if the affinity group IDs have changed and if so, update the IDs
 		if d.HasChange("affinity_group_ids") {
 			p := cs.AffinityGroup.NewUpdateVMAffinityGroupParams(d.Id())
-			groups := []string{}
+			var groups []string
 
 			if agIDs := d.Get("affinity_group_ids").(*schema.Set); agIDs.Len() > 0 {
 				for _, group := range agIDs.List() {
@@ -474,7 +446,7 @@ func resourceCosmicInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 		// Check if the affinity group names have changed and if so, update the names
 		if d.HasChange("affinity_group_names") {
 			p := cs.AffinityGroup.NewUpdateVMAffinityGroupParams(d.Id())
-			groups := []string{}
+			var groups []string
 
 			if agNames := d.Get("affinity_group_names").(*schema.Set); agNames.Len() > 0 {
 				for _, group := range agNames.List() {
@@ -526,6 +498,25 @@ func resourceCosmicInstanceUpdate(d *schema.ResourceData, meta interface{}) erro
 					"Error updating user_data for instance %s: %s", name, err)
 			}
 			d.SetPartial("user_data")
+		}
+
+		// Check if the user data has changed and if so, update the user data
+		if d.HasChange("optimisefor") {
+			log.Printf("[DEBUG] optimisefor changed for %s, starting update", name)
+
+			ud, err := getUserData(d.Get("optimisefor").(string), cs.HTTPGETOnly)
+			if err != nil {
+				return err
+			}
+
+			p := cs.VirtualMachine.NewUpdateVirtualMachineParams(d.Id())
+			p.SetOptimisefor(ud)
+			_, err = cs.VirtualMachine.UpdateVirtualMachine(p)
+			if err != nil {
+				return fmt.Errorf(
+					"Error updating optimisefor for instance %s: %s", name, err)
+			}
+			d.SetPartial("optimisefor")
 		}
 
 		// Start the virtual machine again

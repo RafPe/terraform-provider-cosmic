@@ -212,12 +212,12 @@ resource "cosmic_vpn_customer_gateway" "bar" {
   ike_policy = "aes256-sha1"
 	ipsec_psk = "terraform"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_CIDR_2,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_CIDR_2,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)
 
 var testAccCosmicVPNCustomerGateway_update = fmt.Sprintf(`
 resource "cosmic_vpc" "foo" {
@@ -259,9 +259,9 @@ resource "cosmic_vpn_customer_gateway" "bar" {
   ike_policy = "3des-md5"
   ipsec_psk = "terraform"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_CIDR_2,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_CIDR_2,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)

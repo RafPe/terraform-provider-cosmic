@@ -46,7 +46,7 @@ func TestAccCosmicSSHKeyPair_register(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"cosmic_ssh_keypair.foo",
 						"public_key",
-						CLOUDSTACK_SSH_PUBLIC_KEY),
+						COSMIC_SSH_PUBLIC_KEY),
 				),
 			},
 		},
@@ -166,4 +166,4 @@ var testAccCosmicSSHKeyPair_register = fmt.Sprintf(`
 resource "cosmic_ssh_keypair" "foo" {
   name = "terraform-test-keypair"
   public_key = "%s"
-}`, CLOUDSTACK_SSH_PUBLIC_KEY)
+}`, COSMIC_SSH_PUBLIC_KEY)

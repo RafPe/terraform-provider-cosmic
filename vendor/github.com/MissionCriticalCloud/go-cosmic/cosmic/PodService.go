@@ -184,8 +184,9 @@ func (s *PodService) NewListDedicatedPodsParams() *ListDedicatedPodsParams {
 
 // Lists dedicated pods.
 func (s *PodService) ListDedicatedPods(p *ListDedicatedPodsParams) (*ListDedicatedPodsResponse, error) {
-	var r, l ListDedicatedPodsResponse
+	var r ListDedicatedPodsResponse
 	for page := 2; ; page++ {
+		var l ListDedicatedPodsResponse
 		resp, err := s.cs.newRequest("listDedicatedPods", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -822,8 +823,9 @@ func (s *PodService) GetPodByID(id string, opts ...OptionFunc) (*Pod, int, error
 
 // Lists all Pods.
 func (s *PodService) ListPods(p *ListPodsParams) (*ListPodsResponse, error) {
-	var r, l ListPodsResponse
+	var r ListPodsResponse
 	for page := 2; ; page++ {
+		var l ListPodsResponse
 		resp, err := s.cs.newRequest("listPods", p.toURLValues())
 		if err != nil {
 			return nil, err

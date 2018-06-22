@@ -184,8 +184,9 @@ func (s *HostService) NewListDedicatedHostsParams() *ListDedicatedHostsParams {
 
 // Lists dedicated hosts.
 func (s *HostService) ListDedicatedHosts(p *ListDedicatedHostsParams) (*ListDedicatedHostsResponse, error) {
-	var r, l ListDedicatedHostsResponse
+	var r ListDedicatedHostsResponse
 	for page := 2; ; page++ {
+		var l ListDedicatedHostsResponse
 		resp, err := s.cs.newRequest("listDedicatedHosts", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1401,8 +1402,9 @@ func (s *HostService) GetHostTagID(keyword string, opts ...OptionFunc) (string, 
 
 // Lists host tags
 func (s *HostService) ListHostTags(p *ListHostTagsParams) (*ListHostTagsResponse, error) {
-	var r, l ListHostTagsResponse
+	var r ListHostTagsResponse
 	for page := 2; ; page++ {
+		var l ListHostTagsResponse
 		resp, err := s.cs.newRequest("listHostTags", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1695,8 +1697,9 @@ func (s *HostService) GetHostByID(id string, opts ...OptionFunc) (*Host, int, er
 
 // Lists hosts.
 func (s *HostService) ListHosts(p *ListHostsParams) (*ListHostsResponse, error) {
-	var r, l ListHostsResponse
+	var r ListHostsResponse
 	for page := 2; ; page++ {
+		var l ListHostsResponse
 		resp, err := s.cs.newRequest("listHosts", p.toURLValues())
 		if err != nil {
 			return nil, err

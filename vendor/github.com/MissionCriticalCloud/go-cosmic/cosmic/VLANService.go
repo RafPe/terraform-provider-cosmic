@@ -248,8 +248,9 @@ func (s *VLANService) GetDedicatedGuestVlanRangeByID(id string, opts ...OptionFu
 
 // Lists dedicated guest vlan ranges
 func (s *VLANService) ListDedicatedGuestVlanRanges(p *ListDedicatedGuestVlanRangesParams) (*ListDedicatedGuestVlanRangesResponse, error) {
-	var r, l ListDedicatedGuestVlanRangesResponse
+	var r ListDedicatedGuestVlanRangesResponse
 	for page := 2; ; page++ {
+		var l ListDedicatedGuestVlanRangesResponse
 		resp, err := s.cs.newRequest("listDedicatedGuestVlanRanges", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -857,8 +858,9 @@ func (s *VLANService) GetVlanIpRangeByID(id string, opts ...OptionFunc) (*VlanIp
 
 // Lists all VLAN IP ranges.
 func (s *VLANService) ListVlanIpRanges(p *ListVlanIpRangesParams) (*ListVlanIpRangesResponse, error) {
-	var r, l ListVlanIpRangesResponse
+	var r ListVlanIpRangesResponse
 	for page := 2; ; page++ {
+		var l ListVlanIpRangesResponse
 		resp, err := s.cs.newRequest("listVlanIpRanges", p.toURLValues())
 		if err != nil {
 			return nil, err

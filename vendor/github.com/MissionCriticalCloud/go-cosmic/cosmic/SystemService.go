@@ -213,8 +213,9 @@ func (s *SystemService) NewListCapacityParams() *ListCapacityParams {
 
 // Lists all the system wide capacities.
 func (s *SystemService) ListCapacity(p *ListCapacityParams) (*ListCapacityResponse, error) {
-	var r, l ListCapacityResponse
+	var r ListCapacityResponse
 	for page := 2; ; page++ {
+		var l ListCapacityResponse
 		resp, err := s.cs.newRequest("listCapacity", p.toURLValues())
 		if err != nil {
 			return nil, err

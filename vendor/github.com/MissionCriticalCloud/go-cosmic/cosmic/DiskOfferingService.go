@@ -616,8 +616,9 @@ func (s *DiskOfferingService) GetDiskOfferingByID(id string, opts ...OptionFunc)
 
 // Lists all available disk offerings.
 func (s *DiskOfferingService) ListDiskOfferings(p *ListDiskOfferingsParams) (*ListDiskOfferingsResponse, error) {
-	var r, l ListDiskOfferingsResponse
+	var r ListDiskOfferingsResponse
 	for page := 2; ; page++ {
+		var l ListDiskOfferingsResponse
 		resp, err := s.cs.newRequest("listDiskOfferings", p.toURLValues())
 		if err != nil {
 			return nil, err

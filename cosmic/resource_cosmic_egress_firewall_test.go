@@ -170,8 +170,8 @@ resource "cosmic_egress_firewall" "foo" {
     ports = ["8080"]
   }
 }`,
-	CLOUDSTACK_NETWORK_2_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_NETWORK_2_OFFERING,
+	COSMIC_ZONE)
 
 var testAccCosmicEgressFirewall_update = fmt.Sprintf(`
 resource "cosmic_network" "foo" {
@@ -199,5 +199,5 @@ resource "cosmic_egress_firewall" "foo" {
     ports = ["80", "1000-2000"]
   }
 }`,
-	CLOUDSTACK_NETWORK_2_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_NETWORK_2_OFFERING,
+	COSMIC_ZONE)

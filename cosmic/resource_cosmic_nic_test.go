@@ -53,7 +53,7 @@ func TestAccCosmicNIC_update(t *testing.T) {
 						"cosmic_instance.foobar", "cosmic_nic.foo", &nic),
 					testAccCheckCosmicNICIPAddress(&nic),
 					resource.TestCheckResourceAttr(
-						"cosmic_nic.foo", "ip_address", CLOUDSTACK_2ND_NIC_IPADDRESS),
+						"cosmic_nic.foo", "ip_address", COSMIC_2ND_NIC_IPADDRESS),
 				),
 			},
 		},
@@ -103,7 +103,7 @@ func testAccCheckCosmicNICAttributes(
 	nic *cosmic.Nic) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if nic.Networkid != CLOUDSTACK_2ND_NIC_NETWORK {
+		if nic.Networkid != COSMIC_2ND_NIC_NETWORK {
 			return fmt.Errorf("Bad network ID: %s", nic.Networkid)
 		}
 
@@ -115,11 +115,11 @@ func testAccCheckCosmicNICIPAddress(
 	nic *cosmic.Nic) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if nic.Networkid != CLOUDSTACK_2ND_NIC_NETWORK {
+		if nic.Networkid != COSMIC_2ND_NIC_NETWORK {
 			return fmt.Errorf("Bad network ID: %s", nic.Networkname)
 		}
 
-		if nic.Ipaddress != CLOUDSTACK_2ND_NIC_IPADDRESS {
+		if nic.Ipaddress != COSMIC_2ND_NIC_IPADDRESS {
 			return fmt.Errorf("Bad IP address: %s", nic.Ipaddress)
 		}
 
@@ -164,11 +164,11 @@ resource "cosmic_nic" "foo" {
   network_id = "%s"
   virtual_machine_id = "${cosmic_instance.foobar.id}"
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_2ND_NIC_NETWORK)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_2ND_NIC_NETWORK)
 
 var testAccCosmicNIC_ipaddress = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -186,9 +186,9 @@ resource "cosmic_nic" "foo" {
   ip_address = "%s"
   virtual_machine_id = "${cosmic_instance.foobar.id}"
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_2ND_NIC_NETWORK,
-	CLOUDSTACK_2ND_NIC_IPADDRESS)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_2ND_NIC_NETWORK,
+	COSMIC_2ND_NIC_IPADDRESS)

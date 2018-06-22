@@ -967,8 +967,9 @@ func (s *ProjectService) GetProjectInvitationByID(id string, opts ...OptionFunc)
 
 // Lists project invitations and provides detailed information for listed invitations
 func (s *ProjectService) ListProjectInvitations(p *ListProjectInvitationsParams) (*ListProjectInvitationsResponse, error) {
-	var r, l ListProjectInvitationsResponse
+	var r ListProjectInvitationsResponse
 	for page := 2; ; page++ {
+		var l ListProjectInvitationsResponse
 		resp, err := s.cs.newRequest("listProjectInvitations", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1241,8 +1242,9 @@ func (s *ProjectService) GetProjectByID(id string, opts ...OptionFunc) (*Project
 
 // Lists projects and provides detailed information for listed projects
 func (s *ProjectService) ListProjects(p *ListProjectsParams) (*ListProjectsResponse, error) {
-	var r, l ListProjectsResponse
+	var r ListProjectsResponse
 	for page := 2; ; page++ {
+		var l ListProjectsResponse
 		resp, err := s.cs.newRequest("listProjects", p.toURLValues())
 		if err != nil {
 			return nil, err

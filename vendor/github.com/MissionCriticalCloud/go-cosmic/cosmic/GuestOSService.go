@@ -514,8 +514,9 @@ func (s *GuestOSService) GetGuestOsMappingByID(id string, opts ...OptionFunc) (*
 
 // Lists all available OS mappings for given hypervisor
 func (s *GuestOSService) ListGuestOsMapping(p *ListGuestOsMappingParams) (*ListGuestOsMappingResponse, error) {
-	var r, l ListGuestOsMappingResponse
+	var r ListGuestOsMappingResponse
 	for page := 2; ; page++ {
+		var l ListGuestOsMappingResponse
 		resp, err := s.cs.newRequest("listGuestOsMapping", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -863,8 +864,9 @@ func (s *GuestOSService) GetOsCategoryByID(id string, opts ...OptionFunc) (*OsCa
 
 // Lists all supported OS categories for this cloud.
 func (s *GuestOSService) ListOsCategories(p *ListOsCategoriesParams) (*ListOsCategoriesResponse, error) {
-	var r, l ListOsCategoriesResponse
+	var r ListOsCategoriesResponse
 	for page := 2; ; page++ {
+		var l ListOsCategoriesResponse
 		resp, err := s.cs.newRequest("listOsCategories", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1014,8 +1016,9 @@ func (s *GuestOSService) GetOsTypeByID(id string, opts ...OptionFunc) (*OsType, 
 
 // Lists all supported OS types for this cloud.
 func (s *GuestOSService) ListOsTypes(p *ListOsTypesParams) (*ListOsTypesResponse, error) {
-	var r, l ListOsTypesResponse
+	var r ListOsTypesResponse
 	for page := 2; ; page++ {
+		var l ListOsTypesResponse
 		resp, err := s.cs.newRequest("listOsTypes", p.toURLValues())
 		if err != nil {
 			return nil, err

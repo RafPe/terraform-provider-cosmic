@@ -119,11 +119,11 @@ func testAccCheckCosmicNetworkBasicAttributes(network *cosmic.Network) resource.
 			return fmt.Errorf("Bad display name: %s", network.Displaytext)
 		}
 
-		if network.Cidr != CLOUDSTACK_NETWORK_2_CIDR {
+		if network.Cidr != COSMIC_NETWORK_2_CIDR {
 			return fmt.Errorf("Bad CIDR: %s", network.Cidr)
 		}
 
-		if network.Networkofferingname != CLOUDSTACK_NETWORK_2_OFFERING {
+		if network.Networkofferingname != COSMIC_NETWORK_2_OFFERING {
 			return fmt.Errorf("Bad network offering: %s", network.Networkofferingname)
 		}
 
@@ -152,11 +152,11 @@ func testAccCheckCosmicNetworkVPCAttributes(network *cosmic.Network) resource.Te
 			return fmt.Errorf("Bad display name: %s", network.Displaytext)
 		}
 
-		if network.Cidr != CLOUDSTACK_VPC_NETWORK_CIDR {
+		if network.Cidr != COSMIC_VPC_NETWORK_CIDR {
 			return fmt.Errorf("Bad CIDR: %s", network.Cidr)
 		}
 
-		if network.Networkofferingname != CLOUDSTACK_VPC_NETWORK_OFFERING {
+		if network.Networkofferingname != COSMIC_VPC_NETWORK_OFFERING {
 			return fmt.Errorf("Bad network offering: %s", network.Networkofferingname)
 		}
 
@@ -195,9 +195,9 @@ resource "cosmic_network" "foo" {
 		terraform-tag = "true"
 	}
 }`,
-	CLOUDSTACK_NETWORK_2_CIDR,
-	CLOUDSTACK_NETWORK_2_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_NETWORK_2_CIDR,
+	COSMIC_NETWORK_2_OFFERING,
+	COSMIC_ZONE)
 
 var testAccCosmicNetwork_vpc = fmt.Sprintf(`
 resource "cosmic_vpc" "foobar" {
@@ -215,12 +215,12 @@ resource "cosmic_network" "foo" {
 	vpc_id = "${cosmic_vpc.foobar.id}"
 	zone = "${cosmic_vpc.foobar.zone}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_NETWORK_CIDR,
-	CLOUDSTACK_VPC_NETWORK_GATEWAY,
-	CLOUDSTACK_VPC_NETWORK_OFFERING)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_NETWORK_CIDR,
+	COSMIC_VPC_NETWORK_GATEWAY,
+	COSMIC_VPC_NETWORK_OFFERING)
 
 var testAccCosmicNetwork_acl = fmt.Sprintf(`
 resource "cosmic_vpc" "foobar" {
@@ -244,12 +244,12 @@ resource "cosmic_network" "foo" {
 	acl_id = "${cosmic_network_acl.foo.id}"
 	zone = "${cosmic_vpc.foobar.zone}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_NETWORK_CIDR,
-	CLOUDSTACK_VPC_NETWORK_GATEWAY,
-	CLOUDSTACK_VPC_NETWORK_OFFERING)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_NETWORK_CIDR,
+	COSMIC_VPC_NETWORK_GATEWAY,
+	COSMIC_VPC_NETWORK_OFFERING)
 
 var testAccCosmicNetwork_updateACL = fmt.Sprintf(`
 resource "cosmic_vpc" "foobar" {
@@ -273,9 +273,9 @@ resource "cosmic_network" "foo" {
 	acl_id = "${cosmic_network_acl.bar.id}"
 	zone = "${cosmic_vpc.foobar.zone}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_NETWORK_CIDR,
-	CLOUDSTACK_VPC_NETWORK_GATEWAY,
-	CLOUDSTACK_VPC_NETWORK_OFFERING)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_NETWORK_CIDR,
+	COSMIC_VPC_NETWORK_GATEWAY,
+	COSMIC_VPC_NETWORK_OFFERING)

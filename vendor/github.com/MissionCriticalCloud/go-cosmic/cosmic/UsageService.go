@@ -316,8 +316,9 @@ func (s *UsageService) GetTrafficTypeID(keyword string, physicalnetworkid string
 
 // Lists traffic types of a given physical network.
 func (s *UsageService) ListTrafficTypes(p *ListTrafficTypesParams) (*ListTrafficTypesResponse, error) {
-	var r, l ListTrafficTypesResponse
+	var r ListTrafficTypesResponse
 	for page := 2; ; page++ {
+		var l ListTrafficTypesResponse
 		resp, err := s.cs.newRequest("listTrafficTypes", p.toURLValues())
 		if err != nil {
 			return nil, err

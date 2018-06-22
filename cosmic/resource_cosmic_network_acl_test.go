@@ -106,6 +106,6 @@ resource "cosmic_network_acl" "foo" {
   description = "terraform-acl-text"
   vpc_id = "${cosmic_vpc.foobar.id}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)

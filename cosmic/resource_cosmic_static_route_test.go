@@ -62,7 +62,7 @@ func testAccCheckCosmicStaticRouteAttributes(
 	route *cosmic.StaticRoute) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if route.Cidr != CLOUDSTACK_STATIC_ROUTE_CIDR {
+		if route.Cidr != COSMIC_STATIC_ROUTE_CIDR {
 			return fmt.Errorf("Bad Cidr: %s", route.Cidr)
 		}
 
@@ -124,11 +124,11 @@ resource "cosmic_static_route" "bar" {
 	nexthop = "%s"
 	vpc_id = "${cosmic_vpc.foobar.id}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_PRIVNW_CIDR,
-	CLOUDSTACK_PRIVNW_OFFERING,
-	CLOUDSTACK_PRIVGW_IPADDRESS,
-	CLOUDSTACK_STATIC_ROUTE_CIDR,
-	CLOUDSTACK_STATIC_ROUTE_NEXTHOP)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_PRIVNW_CIDR,
+	COSMIC_PRIVNW_OFFERING,
+	COSMIC_PRIVGW_IPADDRESS,
+	COSMIC_STATIC_ROUTE_CIDR,
+	COSMIC_STATIC_ROUTE_NEXTHOP)

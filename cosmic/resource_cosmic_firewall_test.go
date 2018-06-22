@@ -21,7 +21,7 @@ func TestAccCosmicFirewall_basic(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckCosmicFirewallRulesExist("cosmic_firewall.foo"),
 					resource.TestCheckResourceAttr(
-						"cosmic_firewall.foo", "ip_address_id", CLOUDSTACK_PUBLIC_IPADDRESS),
+						"cosmic_firewall.foo", "ip_address_id", COSMIC_PUBLIC_IPADDRESS),
 					resource.TestCheckResourceAttr(
 						"cosmic_firewall.foo", "rule.#", "2"),
 					resource.TestCheckResourceAttr(
@@ -55,7 +55,7 @@ func TestAccCosmicFirewall_update(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckCosmicFirewallRulesExist("cosmic_firewall.foo"),
 					resource.TestCheckResourceAttr(
-						"cosmic_firewall.foo", "ip_address_id", CLOUDSTACK_PUBLIC_IPADDRESS),
+						"cosmic_firewall.foo", "ip_address_id", COSMIC_PUBLIC_IPADDRESS),
 					resource.TestCheckResourceAttr(
 						"cosmic_firewall.foo", "rule.#", "2"),
 					resource.TestCheckResourceAttr(
@@ -80,7 +80,7 @@ func TestAccCosmicFirewall_update(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckCosmicFirewallRulesExist("cosmic_firewall.foo"),
 					resource.TestCheckResourceAttr(
-						"cosmic_firewall.foo", "ip_address_id", CLOUDSTACK_PUBLIC_IPADDRESS),
+						"cosmic_firewall.foo", "ip_address_id", COSMIC_PUBLIC_IPADDRESS),
 					resource.TestCheckResourceAttr(
 						"cosmic_firewall.foo", "rule.#", "3"),
 					resource.TestCheckResourceAttr(
@@ -187,7 +187,7 @@ resource "cosmic_firewall" "foo" {
     protocol = "tcp"
     ports = ["80", "1000-2000"]
   }
-}`, CLOUDSTACK_PUBLIC_IPADDRESS)
+}`, COSMIC_PUBLIC_IPADDRESS)
 
 var testAccCosmicFirewall_update = fmt.Sprintf(`
 resource "cosmic_firewall" "foo" {
@@ -210,4 +210,4 @@ resource "cosmic_firewall" "foo" {
     protocol = "tcp"
     ports = ["80", "443"]
   }
-}`, CLOUDSTACK_PUBLIC_IPADDRESS)
+}`, COSMIC_PUBLIC_IPADDRESS)

@@ -372,8 +372,9 @@ func (s *ResourcemetadataService) NewListResourceDetailsParams(resourcetype stri
 
 // List resource detail(s)
 func (s *ResourcemetadataService) ListResourceDetails(p *ListResourceDetailsParams) (*ListResourceDetailsResponse, error) {
-	var r, l ListResourceDetailsResponse
+	var r ListResourceDetailsResponse
 	for page := 2; ; page++ {
+		var l ListResourceDetailsResponse
 		resp, err := s.cs.newRequest("listResourceDetails", p.toURLValues())
 		if err != nil {
 			return nil, err

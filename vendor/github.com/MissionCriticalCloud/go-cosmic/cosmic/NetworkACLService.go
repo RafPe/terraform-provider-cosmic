@@ -1108,8 +1108,9 @@ func (s *NetworkACLService) GetNetworkACLListByID(id string, opts ...OptionFunc)
 
 // Lists all network ACLs
 func (s *NetworkACLService) ListNetworkACLLists(p *ListNetworkACLListsParams) (*ListNetworkACLListsResponse, error) {
-	var r, l ListNetworkACLListsResponse
+	var r ListNetworkACLListsResponse
 	for page := 2; ; page++ {
+		var l ListNetworkACLListsResponse
 		resp, err := s.cs.newRequest("listNetworkACLLists", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1370,8 +1371,9 @@ func (s *NetworkACLService) GetNetworkACLByID(id string, opts ...OptionFunc) (*N
 
 // Lists all network ACL items
 func (s *NetworkACLService) ListNetworkACLs(p *ListNetworkACLsParams) (*ListNetworkACLsResponse, error) {
-	var r, l ListNetworkACLsResponse
+	var r ListNetworkACLsResponse
 	for page := 2; ; page++ {
+		var l ListNetworkACLsResponse
 		resp, err := s.cs.newRequest("listNetworkACLs", p.toURLValues())
 		if err != nil {
 			return nil, err

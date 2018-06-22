@@ -21,7 +21,7 @@ func TestAccCosmicPortForward_basic(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckCosmicPortForwardsExist("cosmic_port_forward.foo"),
 					resource.TestCheckResourceAttr(
-						"cosmic_port_forward.foo", "ip_address_id", CLOUDSTACK_PUBLIC_IPADDRESS),
+						"cosmic_port_forward.foo", "ip_address_id", COSMIC_PUBLIC_IPADDRESS),
 					resource.TestCheckResourceAttr(
 						"cosmic_port_forward.foo", "forward.#", "1"),
 				),
@@ -41,7 +41,7 @@ func TestAccCosmicPortForward_update(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckCosmicPortForwardsExist("cosmic_port_forward.foo"),
 					resource.TestCheckResourceAttr(
-						"cosmic_port_forward.foo", "ip_address_id", CLOUDSTACK_PUBLIC_IPADDRESS),
+						"cosmic_port_forward.foo", "ip_address_id", COSMIC_PUBLIC_IPADDRESS),
 					resource.TestCheckResourceAttr(
 						"cosmic_port_forward.foo", "forward.#", "1"),
 				),
@@ -52,7 +52,7 @@ func TestAccCosmicPortForward_update(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					testAccCheckCosmicPortForwardsExist("cosmic_port_forward.foo"),
 					resource.TestCheckResourceAttr(
-						"cosmic_port_forward.foo", "ip_address_id", CLOUDSTACK_PUBLIC_IPADDRESS),
+						"cosmic_port_forward.foo", "ip_address_id", COSMIC_PUBLIC_IPADDRESS),
 					resource.TestCheckResourceAttr(
 						"cosmic_port_forward.foo", "forward.#", "2"),
 				),
@@ -140,11 +140,11 @@ resource "cosmic_port_forward" "foo" {
     virtual_machine_id = "${cosmic_instance.foobar.id}"
   }
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_PUBLIC_IPADDRESS)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_PUBLIC_IPADDRESS)
 
 var testAccCosmicPortForward_update = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -173,8 +173,8 @@ resource "cosmic_port_forward" "foo" {
     virtual_machine_id = "${cosmic_instance.foobar.id}"
   }
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_PUBLIC_IPADDRESS)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_PUBLIC_IPADDRESS)

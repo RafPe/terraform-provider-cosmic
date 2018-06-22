@@ -215,8 +215,9 @@ func (s *NetworkDeviceService) NewListNetworkDeviceParams() *ListNetworkDevicePa
 
 // List network devices
 func (s *NetworkDeviceService) ListNetworkDevice(p *ListNetworkDeviceParams) (*ListNetworkDeviceResponse, error) {
-	var r, l ListNetworkDeviceResponse
+	var r ListNetworkDeviceResponse
 	for page := 2; ; page++ {
+		var l ListNetworkDeviceResponse
 		resp, err := s.cs.newRequest("listNetworkDevice", p.toURLValues())
 		if err != nil {
 			return nil, err

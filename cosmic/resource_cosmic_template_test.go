@@ -97,19 +97,19 @@ func testAccCheckCosmicTemplateBasicAttributes(
 			return fmt.Errorf("Bad name: %s", template.Name)
 		}
 
-		if template.Format != CLOUDSTACK_TEMPLATE_FORMAT {
+		if template.Format != COSMIC_TEMPLATE_FORMAT {
 			return fmt.Errorf("Bad format: %s", template.Format)
 		}
 
-		if template.Hypervisor != CLOUDSTACK_HYPERVISOR {
+		if template.Hypervisor != COSMIC_HYPERVISOR {
 			return fmt.Errorf("Bad hypervisor: %s", template.Hypervisor)
 		}
 
-		if template.Ostypename != CLOUDSTACK_TEMPLATE_OS_TYPE {
+		if template.Ostypename != COSMIC_TEMPLATE_OS_TYPE {
 			return fmt.Errorf("Bad os type: %s", template.Ostypename)
 		}
 
-		if template.Zonename != CLOUDSTACK_ZONE {
+		if template.Zonename != COSMIC_ZONE {
 			return fmt.Errorf("Bad zone: %s", template.Zonename)
 		}
 
@@ -168,11 +168,11 @@ resource "cosmic_template" "foo" {
   zone = "%s"
 }
 `,
-	CLOUDSTACK_TEMPLATE_FORMAT,
-	CLOUDSTACK_HYPERVISOR,
-	CLOUDSTACK_TEMPLATE_OS_TYPE,
-	CLOUDSTACK_TEMPLATE_URL,
-	CLOUDSTACK_ZONE)
+	COSMIC_TEMPLATE_FORMAT,
+	COSMIC_HYPERVISOR,
+	COSMIC_TEMPLATE_OS_TYPE,
+	COSMIC_TEMPLATE_URL,
+	COSMIC_ZONE)
 
 var testAccCosmicTemplate_update = fmt.Sprintf(`
 resource "cosmic_template" "foo" {
@@ -187,8 +187,8 @@ resource "cosmic_template" "foo" {
 	password_enabled = true
 }
 `,
-	CLOUDSTACK_TEMPLATE_FORMAT,
-	CLOUDSTACK_HYPERVISOR,
-	CLOUDSTACK_TEMPLATE_OS_TYPE,
-	CLOUDSTACK_TEMPLATE_URL,
-	CLOUDSTACK_ZONE)
+	COSMIC_TEMPLATE_FORMAT,
+	COSMIC_HYPERVISOR,
+	COSMIC_TEMPLATE_OS_TYPE,
+	COSMIC_TEMPLATE_URL,
+	COSMIC_ZONE)

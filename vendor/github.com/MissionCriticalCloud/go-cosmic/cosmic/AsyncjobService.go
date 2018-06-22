@@ -88,7 +88,7 @@ type QueryAsyncJobResultResponse struct {
 	Jobresult       json.RawMessage `json:"jobresult,omitempty"`
 	Jobresultcode   int             `json:"jobresultcode,omitempty"`
 	Jobresulttype   string          `json:"jobresulttype,omitempty"`
-	Jobstatus       int             `json:"jobstatus,omitempty"`
+    Jobstatus       int             `json:"jobstatus,omitempty"`
 	Userid          string          `json:"userid,omitempty"`
 }
 
@@ -198,8 +198,9 @@ func (s *AsyncjobService) NewListAsyncJobsParams() *ListAsyncJobsParams {
 
 // Lists all pending asynchronous jobs for the account.
 func (s *AsyncjobService) ListAsyncJobs(p *ListAsyncJobsParams) (*ListAsyncJobsResponse, error) {
-	var r, l ListAsyncJobsResponse
+	var r ListAsyncJobsResponse
 	for page := 2; ; page++ {
+		var l ListAsyncJobsResponse
 		resp, err := s.cs.newRequest("listAsyncJobs", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -236,6 +237,5 @@ type AsyncJob struct {
 	Jobresult       json.RawMessage `json:"jobresult,omitempty"`
 	Jobresultcode   int             `json:"jobresultcode,omitempty"`
 	Jobresulttype   string          `json:"jobresulttype,omitempty"`
-	Jobstatus       int             `json:"jobstatus,omitempty"`
 	Userid          string          `json:"userid,omitempty"`
 }

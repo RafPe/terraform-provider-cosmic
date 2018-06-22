@@ -119,8 +119,9 @@ func (s *CloudOpsService) NewListHAWorkersParams() *ListHAWorkersParams {
 
 // Lists all HA workers
 func (s *CloudOpsService) ListHAWorkers(p *ListHAWorkersParams) (*ListHAWorkersResponse, error) {
-	var r, l ListHAWorkersResponse
+	var r ListHAWorkersResponse
 	for page := 2; ; page++ {
+		var l ListHAWorkersResponse
 		resp, err := s.cs.newRequest("listHAWorkers", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -270,8 +271,9 @@ func (s *CloudOpsService) NewListWhoHasThisIpParams(ipaddress string) *ListWhoHa
 
 // Lists all for this IP address
 func (s *CloudOpsService) ListWhoHasThisIp(p *ListWhoHasThisIpParams) (*ListWhoHasThisIpResponse, error) {
-	var r, l ListWhoHasThisIpResponse
+	var r ListWhoHasThisIpResponse
 	for page := 2; ; page++ {
+		var l ListWhoHasThisIpResponse
 		resp, err := s.cs.newRequest("listWhoHasThisIp", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -426,8 +428,9 @@ func (s *CloudOpsService) NewListWhoHasThisMacParams() *ListWhoHasThisMacParams 
 
 // Lists all for this MAC address
 func (s *CloudOpsService) ListWhoHasThisMac(p *ListWhoHasThisMacParams) (*ListWhoHasThisMacResponse, error) {
-	var r, l ListWhoHasThisMacResponse
+	var r ListWhoHasThisMacResponse
 	for page := 2; ; page++ {
+		var l ListWhoHasThisMacResponse
 		resp, err := s.cs.newRequest("listWhoHasThisMac", p.toURLValues())
 		if err != nil {
 			return nil, err

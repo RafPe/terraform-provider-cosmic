@@ -1333,8 +1333,9 @@ func (s *AccountService) GetAccountByID(id string, opts ...OptionFunc) (*Account
 
 // Lists accounts and provides detailed account information for listed accounts
 func (s *AccountService) ListAccounts(p *ListAccountsParams) (*ListAccountsResponse, error) {
-	var r, l ListAccountsResponse
+	var r ListAccountsResponse
 	for page := 2; ; page++ {
+		var l ListAccountsResponse
 		resp, err := s.cs.newRequest("listAccounts", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1717,8 +1718,9 @@ func (s *AccountService) GetProjectAccountID(keyword string, projectid string, o
 
 // Lists project's accounts
 func (s *AccountService) ListProjectAccounts(p *ListProjectAccountsParams) (*ListProjectAccountsResponse, error) {
-	var r, l ListProjectAccountsResponse
+	var r ListProjectAccountsResponse
 	for page := 2; ; page++ {
+		var l ListProjectAccountsResponse
 		resp, err := s.cs.newRequest("listProjectAccounts", p.toURLValues())
 		if err != nil {
 			return nil, err

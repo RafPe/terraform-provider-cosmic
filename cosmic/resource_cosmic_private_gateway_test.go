@@ -60,7 +60,7 @@ func testAccCheckCosmicPrivateGatewayExists(n string, gateway *cosmic.PrivateGat
 func testAccCheckCosmicPrivateGatewayAttributes(gateway *cosmic.PrivateGateway) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if gateway.Ipaddress != CLOUDSTACK_PRIVGW_IPADDRESS {
+		if gateway.Ipaddress != COSMIC_PRIVGW_IPADDRESS {
 			return fmt.Errorf("Bad Gateway: %s", gateway.Ipaddress)
 		}
 
@@ -115,9 +115,9 @@ resource "cosmic_private_gateway" "foo" {
 	acl_id = "${cosmic_network_acl.foo.id}"
 	vpc_id = "${cosmic_vpc.foobar.id}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_PRIVNW_CIDR,
-	CLOUDSTACK_PRIVNW_OFFERING,
-	CLOUDSTACK_PRIVGW_IPADDRESS)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_PRIVNW_CIDR,
+	COSMIC_PRIVNW_OFFERING,
+	COSMIC_PRIVGW_IPADDRESS)

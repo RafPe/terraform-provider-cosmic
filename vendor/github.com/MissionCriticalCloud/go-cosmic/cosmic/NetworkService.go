@@ -351,6 +351,7 @@ func (s *NetworkService) CreateNetwork(p *CreateNetworkParams) (*CreateNetworkRe
 type CreateNetworkResponse struct {
 	Account                     string `json:"account,omitempty"`
 	Aclid                       string `json:"aclid,omitempty"`
+	Aclname                     string `json:"aclname,omitempty"`
 	Acltype                     string `json:"acltype,omitempty"`
 	Broadcastdomaintype         string `json:"broadcastdomaintype,omitempty"`
 	Broadcasturi                string `json:"broadcasturi,omitempty"`
@@ -585,6 +586,7 @@ type RestartNetworkResponse struct {
 	JobID                 string `json:"jobid,omitempty"`
 	Account               string `json:"account,omitempty"`
 	Aclid                 string `json:"aclid,omitempty"`
+	Aclname               string `json:"aclname,omitempty"`
 	Allocated             string `json:"allocated,omitempty"`
 	Associatednetworkid   string `json:"associatednetworkid,omitempty"`
 	Associatednetworkname string `json:"associatednetworkname,omitempty"`
@@ -807,6 +809,7 @@ type UpdateNetworkResponse struct {
 	JobID                       string `json:"jobid,omitempty"`
 	Account                     string `json:"account,omitempty"`
 	Aclid                       string `json:"aclid,omitempty"`
+	Aclname                     string `json:"aclname,omitempty"`
 	Acltype                     string `json:"acltype,omitempty"`
 	Broadcastdomaintype         string `json:"broadcastdomaintype,omitempty"`
 	Broadcasturi                string `json:"broadcasturi,omitempty"`
@@ -938,8 +941,9 @@ func (s *NetworkService) NewListNetworkIsolationMethodsParams() *ListNetworkIsol
 
 // Lists supported methods of network isolation
 func (s *NetworkService) ListNetworkIsolationMethods(p *ListNetworkIsolationMethodsParams) (*ListNetworkIsolationMethodsResponse, error) {
-	var r, l ListNetworkIsolationMethodsResponse
+	var r ListNetworkIsolationMethodsResponse
 	for page := 2; ; page++ {
+		var l ListNetworkIsolationMethodsResponse
 		resp, err := s.cs.newRequest("listNetworkIsolationMethods", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1361,8 +1365,9 @@ func (s *NetworkService) GetNetworkServiceProviderID(name string, opts ...Option
 
 // Lists network serviceproviders for a given physical network.
 func (s *NetworkService) ListNetworkServiceProviders(p *ListNetworkServiceProvidersParams) (*ListNetworkServiceProvidersResponse, error) {
-	var r, l ListNetworkServiceProvidersResponse
+	var r ListNetworkServiceProvidersResponse
 	for page := 2; ; page++ {
+		var l ListNetworkServiceProvidersResponse
 		resp, err := s.cs.newRequest("listNetworkServiceProviders", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1751,8 +1756,9 @@ func (s *NetworkService) GetNetworkByID(id string, opts ...OptionFunc) (*Network
 
 // Lists all available networks.
 func (s *NetworkService) ListNetworks(p *ListNetworksParams) (*ListNetworksResponse, error) {
-	var r, l ListNetworksResponse
+	var r ListNetworksResponse
 	for page := 2; ; page++ {
+		var l ListNetworksResponse
 		resp, err := s.cs.newRequest("listNetworks", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1782,6 +1788,7 @@ type ListNetworksResponse struct {
 type Network struct {
 	Account                     string `json:"account,omitempty"`
 	Aclid                       string `json:"aclid,omitempty"`
+	Aclname                     string `json:"aclname,omitempty"`
 	Acltype                     string `json:"acltype,omitempty"`
 	Broadcastdomaintype         string `json:"broadcastdomaintype,omitempty"`
 	Broadcasturi                string `json:"broadcasturi,omitempty"`
@@ -1961,8 +1968,9 @@ func (s *NetworkService) GetNiciraNvpDeviceNetworkID(keyword string, nvpdeviceid
 
 // lists network that are using a nicira nvp device
 func (s *NetworkService) ListNiciraNvpDeviceNetworks(p *ListNiciraNvpDeviceNetworksParams) (*ListNiciraNvpDeviceNetworksResponse, error) {
-	var r, l ListNiciraNvpDeviceNetworksResponse
+	var r ListNiciraNvpDeviceNetworksResponse
 	for page := 2; ; page++ {
+		var l ListNiciraNvpDeviceNetworksResponse
 		resp, err := s.cs.newRequest("listNiciraNvpDeviceNetworks", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1992,6 +2000,7 @@ type ListNiciraNvpDeviceNetworksResponse struct {
 type NiciraNvpDeviceNetwork struct {
 	Account                     string `json:"account,omitempty"`
 	Aclid                       string `json:"aclid,omitempty"`
+	Aclname                     string `json:"aclname,omitempty"`
 	Acltype                     string `json:"acltype,omitempty"`
 	Broadcastdomaintype         string `json:"broadcastdomaintype,omitempty"`
 	Broadcasturi                string `json:"broadcasturi,omitempty"`
@@ -2575,8 +2584,9 @@ func (s *NetworkService) GetPhysicalNetworkByID(id string, opts ...OptionFunc) (
 
 // Lists physical networks
 func (s *NetworkService) ListPhysicalNetworks(p *ListPhysicalNetworksParams) (*ListPhysicalNetworksResponse, error) {
-	var r, l ListPhysicalNetworksResponse
+	var r ListPhysicalNetworksResponse
 	for page := 2; ; page++ {
+		var l ListPhysicalNetworksResponse
 		resp, err := s.cs.newRequest("listPhysicalNetworks", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -3083,8 +3093,9 @@ func (s *NetworkService) GetStorageNetworkIpRangeByID(id string, opts ...OptionF
 
 // List a storage network IP range.
 func (s *NetworkService) ListStorageNetworkIpRange(p *ListStorageNetworkIpRangeParams) (*ListStorageNetworkIpRangeResponse, error) {
-	var r, l ListStorageNetworkIpRangeResponse
+	var r ListStorageNetworkIpRangeResponse
 	for page := 2; ; page++ {
+		var l ListStorageNetworkIpRangeResponse
 		resp, err := s.cs.newRequest("listStorageNetworkIpRange", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -3316,8 +3327,9 @@ func (s *NetworkService) NewListSupportedNetworkServicesParams() *ListSupportedN
 
 // Lists all network services provided by CloudStack or for the given Provider.
 func (s *NetworkService) ListSupportedNetworkServices(p *ListSupportedNetworkServicesParams) (*ListSupportedNetworkServicesResponse, error) {
-	var r, l ListSupportedNetworkServicesResponse
+	var r ListSupportedNetworkServicesResponse
 	for page := 2; ; page++ {
+		var l ListSupportedNetworkServicesResponse
 		resp, err := s.cs.newRequest("listSupportedNetworkServices", p.toURLValues())
 		if err != nil {
 			return nil, err

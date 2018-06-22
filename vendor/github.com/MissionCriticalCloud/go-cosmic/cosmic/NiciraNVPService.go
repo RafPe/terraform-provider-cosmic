@@ -292,8 +292,9 @@ func (s *NiciraNVPService) NewListNiciraNvpDevicesParams() *ListNiciraNvpDevices
 
 // Lists Nicira NVP devices
 func (s *NiciraNVPService) ListNiciraNvpDevices(p *ListNiciraNvpDevicesParams) (*ListNiciraNvpDevicesResponse, error) {
-	var r, l ListNiciraNvpDevicesResponse
+	var r ListNiciraNvpDevicesResponse
 	for page := 2; ; page++ {
+		var l ListNiciraNvpDevicesResponse
 		resp, err := s.cs.newRequest("listNiciraNvpDevices", p.toURLValues())
 		if err != nil {
 			return nil, err

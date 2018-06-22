@@ -66,7 +66,7 @@ func testAccCheckCosmicStaticNATAttributes(
 	ipaddr *cosmic.PublicIpAddress) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if ipaddr.Associatednetworkid != CLOUDSTACK_NETWORK_1 {
+		if ipaddr.Associatednetworkid != COSMIC_NETWORK_1 {
 			return fmt.Errorf("Bad network ID: %s", ipaddr.Associatednetworkid)
 		}
 
@@ -115,8 +115,8 @@ resource "cosmic_static_nat" "foo" {
 	ip_address_id = "${cosmic_ipaddress.foo.id}"
   virtual_machine_id = "${cosmic_instance.foobar.id}"
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
 )

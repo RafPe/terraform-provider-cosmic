@@ -24,7 +24,7 @@ func TestAccCosmicVPC_basic(t *testing.T) {
 						"cosmic_vpc.foo", &vpc),
 					testAccCheckCosmicVPCAttributes(&vpc),
 					resource.TestCheckResourceAttr(
-						"cosmic_vpc.foo", "vpc_offering", CLOUDSTACK_VPC_OFFERING),
+						"cosmic_vpc.foo", "vpc_offering", COSMIC_VPC_OFFERING),
 				),
 			},
 		},
@@ -72,7 +72,7 @@ func testAccCheckCosmicVPCAttributes(
 			return fmt.Errorf("Bad display text: %s", vpc.Displaytext)
 		}
 
-		if vpc.Cidr != CLOUDSTACK_VPC_CIDR_1 {
+		if vpc.Cidr != COSMIC_VPC_CIDR_1 {
 			return fmt.Errorf("Bad VPC CIDR: %s", vpc.Cidr)
 		}
 
@@ -114,6 +114,6 @@ resource "cosmic_vpc" "foo" {
   network_domain = "terraform-domain"
   zone = "%s"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)

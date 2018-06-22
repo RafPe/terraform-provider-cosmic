@@ -427,8 +427,9 @@ func (s *LimitService) NewListResourceLimitsParams() *ListResourceLimitsParams {
 
 // Lists resource limits.
 func (s *LimitService) ListResourceLimits(p *ListResourceLimitsParams) (*ListResourceLimitsResponse, error) {
-	var r, l ListResourceLimitsResponse
+	var r ListResourceLimitsResponse
 	for page := 2; ; page++ {
+		var l ListResourceLimitsResponse
 		resp, err := s.cs.newRequest("listResourceLimits", p.toURLValues())
 		if err != nil {
 			return nil, err

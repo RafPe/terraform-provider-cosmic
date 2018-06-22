@@ -43,7 +43,7 @@ func TestAccCosmicSecondaryIPAddress_fixedIP(t *testing.T) {
 						"cosmic_secondary_ipaddress.foo", &ip),
 					testAccCheckCosmicSecondaryIPAddressAttributes(&ip),
 					resource.TestCheckResourceAttr(
-						"cosmic_secondary_ipaddress.foo", "ip_address", CLOUDSTACK_NETWORK_1_IPADDRESS1),
+						"cosmic_secondary_ipaddress.foo", "ip_address", COSMIC_NETWORK_1_IPADDRESS1),
 				),
 			},
 		},
@@ -124,7 +124,7 @@ func testAccCheckCosmicSecondaryIPAddressAttributes(
 	ip *cosmic.AddIpToNicResponse) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if ip.Ipaddress != CLOUDSTACK_NETWORK_1_IPADDRESS1 {
+		if ip.Ipaddress != COSMIC_NETWORK_1_IPADDRESS1 {
 			return fmt.Errorf("Bad IP address: %s", ip.Ipaddress)
 		}
 		return nil
@@ -213,10 +213,10 @@ resource "cosmic_secondary_ipaddress" "foo" {
 	virtual_machine_id = "${cosmic_instance.foobar.id}"
 }
 `,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE)
 
 var testAccCosmicSecondaryIPAddress_fixedIP = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -232,8 +232,8 @@ resource "cosmic_secondary_ipaddress" "foo" {
 	ip_address = "%s"
 	virtual_machine_id = "${cosmic_instance.foobar.id}"
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_NETWORK_1_IPADDRESS1)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_NETWORK_1_IPADDRESS1)

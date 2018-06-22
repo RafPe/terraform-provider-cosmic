@@ -803,8 +803,9 @@ func (s *StoragePoolService) GetStoragePoolByID(id string, opts ...OptionFunc) (
 
 // Lists storage pools.
 func (s *StoragePoolService) ListStoragePools(p *ListStoragePoolsParams) (*ListStoragePoolsResponse, error) {
-	var r, l ListStoragePoolsResponse
+	var r ListStoragePoolsResponse
 	for page := 2; ; page++ {
+		var l ListStoragePoolsResponse
 		resp, err := s.cs.newRequest("listStoragePools", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1025,8 +1026,9 @@ func (s *StoragePoolService) NewListStorageProvidersParams(storagePoolType strin
 
 // Lists storage providers.
 func (s *StoragePoolService) ListStorageProviders(p *ListStorageProvidersParams) (*ListStorageProvidersResponse, error) {
-	var r, l ListStorageProvidersResponse
+	var r ListStorageProvidersResponse
 	for page := 2; ; page++ {
+		var l ListStorageProvidersResponse
 		resp, err := s.cs.newRequest("listStorageProviders", p.toURLValues())
 		if err != nil {
 			return nil, err

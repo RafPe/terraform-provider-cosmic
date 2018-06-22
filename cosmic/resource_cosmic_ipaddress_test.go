@@ -81,7 +81,7 @@ func testAccCheckCosmicIPAddressAttributes(
 	ipaddr *cosmic.PublicIpAddress) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if ipaddr.Associatednetworkid != CLOUDSTACK_NETWORK_1 {
+		if ipaddr.Associatednetworkid != COSMIC_NETWORK_1 {
 			return fmt.Errorf("Bad network ID: %s", ipaddr.Associatednetworkid)
 		}
 
@@ -113,7 +113,7 @@ func testAccCheckCosmicIPAddressDestroy(s *terraform.State) error {
 var testAccCosmicIPAddress_basic = fmt.Sprintf(`
 resource "cosmic_ipaddress" "foo" {
   network_id = "%s"
-}`, CLOUDSTACK_NETWORK_1)
+}`, COSMIC_NETWORK_1)
 
 var testAccCosmicIPAddress_vpc = fmt.Sprintf(`
 resource "cosmic_vpc" "foobar" {
@@ -126,6 +126,6 @@ resource "cosmic_vpc" "foobar" {
 resource "cosmic_ipaddress" "foo" {
   vpc_id = "${cosmic_vpc.foobar.id}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)

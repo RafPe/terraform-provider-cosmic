@@ -413,8 +413,9 @@ func (s *NATService) GetIpForwardingRuleByID(id string, opts ...OptionFunc) (*Ip
 
 // List the IP forwarding rules
 func (s *NATService) ListIpForwardingRules(p *ListIpForwardingRulesParams) (*ListIpForwardingRulesResponse, error) {
-	var r, l ListIpForwardingRulesResponse
+	var r ListIpForwardingRulesResponse
 	for page := 2; ; page++ {
+		var l ListIpForwardingRulesResponse
 		resp, err := s.cs.newRequest("listIpForwardingRules", p.toURLValues())
 		if err != nil {
 			return nil, err

@@ -75,7 +75,7 @@ func TestAccCosmicDisk_update(t *testing.T) {
 						"cosmic_disk.foo", &disk),
 					testAccCheckCosmicDiskResized(&disk),
 					resource.TestCheckResourceAttr(
-						"cosmic_disk.foo", "disk_offering", CLOUDSTACK_DISK_OFFERING_2),
+						"cosmic_disk.foo", "disk_offering", COSMIC_DISK_OFFERING_2),
 				),
 			},
 		},
@@ -119,7 +119,7 @@ func testAccCheckCosmicDiskAttributes(
 			return fmt.Errorf("Bad name: %s", disk.Name)
 		}
 
-		if disk.Diskofferingname != CLOUDSTACK_DISK_OFFERING_1 {
+		if disk.Diskofferingname != COSMIC_DISK_OFFERING_1 {
 			return fmt.Errorf("Bad disk offering: %s", disk.Diskofferingname)
 		}
 
@@ -131,7 +131,7 @@ func testAccCheckCosmicDiskResized(
 	disk *cosmic.Volume) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 
-		if disk.Diskofferingname != CLOUDSTACK_DISK_OFFERING_2 {
+		if disk.Diskofferingname != COSMIC_DISK_OFFERING_2 {
 			return fmt.Errorf("Bad disk offering: %s", disk.Diskofferingname)
 		}
 
@@ -167,8 +167,8 @@ resource "cosmic_disk" "foo" {
   disk_offering = "%s"
   zone = "%s"
 }`,
-	CLOUDSTACK_DISK_OFFERING_1,
-	CLOUDSTACK_ZONE)
+	COSMIC_DISK_OFFERING_1,
+	COSMIC_ZONE)
 
 var testAccCosmicDisk_deviceID = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -189,11 +189,11 @@ resource "cosmic_disk" "foo" {
   virtual_machine_id = "${cosmic_instance.foobar.id}"
   zone = "${cosmic_instance.foobar.zone}"
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_DISK_OFFERING_1)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_DISK_OFFERING_1)
 
 var testAccCosmicDisk_update = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -213,11 +213,11 @@ resource "cosmic_disk" "foo" {
   virtual_machine_id = "${cosmic_instance.foobar.id}"
   zone = "${cosmic_instance.foobar.zone}"
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_DISK_OFFERING_1)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_DISK_OFFERING_1)
 
 var testAccCosmicDisk_resize = fmt.Sprintf(`
 resource "cosmic_instance" "foobar" {
@@ -237,8 +237,8 @@ resource "cosmic_disk" "foo" {
 	virtual_machine_id = "${cosmic_instance.foobar.id}"
   zone = "${cosmic_instance.foobar.zone}"
 }`,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_DISK_OFFERING_2)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_DISK_OFFERING_2)

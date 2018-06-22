@@ -75,7 +75,6 @@ type Capability struct {
 	Kvmsnapshotenabled          bool   `json:"kvmsnapshotenabled,omitempty"`
 	Projectinviterequired       bool   `json:"projectinviterequired,omitempty"`
 	Regionsecondaryenabled      bool   `json:"regionsecondaryenabled,omitempty"`
-	Securitygroupsenabled       bool   `json:"securitygroupsenabled,omitempty"`
 	SupportELB                  string `json:"supportELB,omitempty"`
 	Userpublictemplateenabled   bool   `json:"userpublictemplateenabled,omitempty"`
 	Xenserverdeploymentsenabled bool   `json:"xenserverdeploymentsenabled,omitempty"`
@@ -299,8 +298,9 @@ func (s *ConfigurationService) NewListConfigurationsParams() *ListConfigurations
 
 // Lists all configurations.
 func (s *ConfigurationService) ListConfigurations(p *ListConfigurationsParams) (*ListConfigurationsResponse, error) {
-	var r, l ListConfigurationsResponse
+	var r ListConfigurationsResponse
 	for page := 2; ; page++ {
+		var l ListConfigurationsResponse
 		resp, err := s.cs.newRequest("listConfigurations", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -390,8 +390,9 @@ func (s *ConfigurationService) NewListDeploymentPlannersParams() *ListDeployment
 
 // Lists all DeploymentPlanners available.
 func (s *ConfigurationService) ListDeploymentPlanners(p *ListDeploymentPlannersParams) (*ListDeploymentPlannersResponse, error) {
-	var r, l ListDeploymentPlannersResponse
+	var r ListDeploymentPlannersResponse
 	for page := 2; ; page++ {
+		var l ListDeploymentPlannersResponse
 		resp, err := s.cs.newRequest("listDeploymentPlanners", p.toURLValues())
 		if err != nil {
 			return nil, err

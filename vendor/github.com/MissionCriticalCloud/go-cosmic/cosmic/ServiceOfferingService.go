@@ -747,8 +747,9 @@ func (s *ServiceOfferingService) GetServiceOfferingByID(id string, opts ...Optio
 
 // Lists all available service offerings.
 func (s *ServiceOfferingService) ListServiceOfferings(p *ListServiceOfferingsParams) (*ListServiceOfferingsResponse, error) {
-	var r, l ListServiceOfferingsResponse
+	var r ListServiceOfferingsResponse
 	for page := 2; ; page++ {
+		var l ListServiceOfferingsResponse
 		resp, err := s.cs.newRequest("listServiceOfferings", p.toURLValues())
 		if err != nil {
 			return nil, err

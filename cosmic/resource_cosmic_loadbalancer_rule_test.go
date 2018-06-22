@@ -258,11 +258,11 @@ resource "cosmic_loadbalancer_rule" "foo" {
   member_ids = ["${cosmic_instance.foobar1.id}"]
 }
 `,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_PUBLIC_IPADDRESS)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_PUBLIC_IPADDRESS)
 
 var testAccCosmicLoadBalancerRule_update = fmt.Sprintf(`
 resource "cosmic_instance" "foobar1" {
@@ -284,11 +284,11 @@ resource "cosmic_loadbalancer_rule" "foo" {
   member_ids = ["${cosmic_instance.foobar1.id}"]
 }
 `,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_PUBLIC_IPADDRESS)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_PUBLIC_IPADDRESS)
 
 var testAccCosmicLoadBalancerRule_forcenew = fmt.Sprintf(`
 resource "cosmic_instance" "foobar1" {
@@ -310,11 +310,11 @@ resource "cosmic_loadbalancer_rule" "foo" {
   member_ids = ["${cosmic_instance.foobar1.id}"]
 }
 `,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_NETWORK_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_PUBLIC_IPADDRESS)
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_NETWORK_1,
+	COSMIC_TEMPLATE,
+	COSMIC_ZONE,
+	COSMIC_PUBLIC_IPADDRESS)
 
 var testAccCosmicLoadBalancerRule_vpc = fmt.Sprintf(`
 resource "cosmic_vpc" "foobar" {
@@ -356,14 +356,14 @@ resource "cosmic_loadbalancer_rule" "foo" {
   private_port = 80
   member_ids = ["${cosmic_instance.foobar1.id}"]
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_NETWORK_CIDR,
-	CLOUDSTACK_VPC_NETWORK_GATEWAY,
-	CLOUDSTACK_VPC_NETWORK_OFFERING,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_TEMPLATE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_NETWORK_CIDR,
+	COSMIC_VPC_NETWORK_GATEWAY,
+	COSMIC_VPC_NETWORK_OFFERING,
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_TEMPLATE)
 
 var testAccCosmicLoadBalancerRule_vpc_update = fmt.Sprintf(`
 resource "cosmic_vpc" "foobar" {
@@ -415,13 +415,13 @@ resource "cosmic_loadbalancer_rule" "foo" {
   private_port = 443
   member_ids = ["${cosmic_instance.foobar1.id}", "${cosmic_instance.foobar2.id}"]
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_NETWORK_CIDR,
-	CLOUDSTACK_VPC_NETWORK_GATEWAY,
-	CLOUDSTACK_VPC_NETWORK_OFFERING,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_TEMPLATE,
-	CLOUDSTACK_SERVICE_OFFERING_1,
-	CLOUDSTACK_TEMPLATE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_NETWORK_CIDR,
+	COSMIC_VPC_NETWORK_GATEWAY,
+	COSMIC_VPC_NETWORK_OFFERING,
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_TEMPLATE,
+	COSMIC_SERVICE_OFFERING_1,
+	COSMIC_TEMPLATE)

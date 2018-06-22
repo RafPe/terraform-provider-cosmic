@@ -153,6 +153,7 @@ type AssociateIpAddressResponse struct {
 	JobID                 string `json:"jobid,omitempty"`
 	Account               string `json:"account,omitempty"`
 	Aclid                 string `json:"aclid,omitempty"`
+	Aclname               string `json:"aclname,omitempty"`
 	Allocated             string `json:"allocated,omitempty"`
 	Associatednetworkid   string `json:"associatednetworkid,omitempty"`
 	Associatednetworkname string `json:"associatednetworkname,omitempty"`
@@ -350,6 +351,7 @@ type UpdateIpAddressResponse struct {
 	JobID                 string `json:"jobid,omitempty"`
 	Account               string `json:"account,omitempty"`
 	Aclid                 string `json:"aclid,omitempty"`
+	Aclname               string `json:"aclname,omitempty"`
 	Allocated             string `json:"allocated,omitempty"`
 	Associatednetworkid   string `json:"associatednetworkid,omitempty"`
 	Associatednetworkname string `json:"associatednetworkname,omitempty"`
@@ -690,10 +692,11 @@ func (s *PublicIPAddressService) GetPublicIpAddressByID(id string, opts ...Optio
 	return nil, l.Count, fmt.Errorf("There is more then one result for PublicIpAddress UUID: %s!", id)
 }
 
-// Lists all public ip addresses
+// Lists all public IP addresses
 func (s *PublicIPAddressService) ListPublicIpAddresses(p *ListPublicIpAddressesParams) (*ListPublicIpAddressesResponse, error) {
-	var r, l ListPublicIpAddressesResponse
+	var r ListPublicIpAddressesResponse
 	for page := 2; ; page++ {
+		var l ListPublicIpAddressesResponse
 		resp, err := s.cs.newRequest("listPublicIpAddresses", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -723,6 +726,7 @@ type ListPublicIpAddressesResponse struct {
 type PublicIpAddress struct {
 	Account               string `json:"account,omitempty"`
 	Aclid                 string `json:"aclid,omitempty"`
+	Aclname               string `json:"aclname,omitempty"`
 	Allocated             string `json:"allocated,omitempty"`
 	Associatednetworkid   string `json:"associatednetworkid,omitempty"`
 	Associatednetworkname string `json:"associatednetworkname,omitempty"`

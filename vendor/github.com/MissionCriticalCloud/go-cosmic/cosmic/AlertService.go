@@ -461,8 +461,9 @@ func (s *AlertService) GetAlertByID(id string, opts ...OptionFunc) (*Alert, int,
 
 // Lists all alerts.
 func (s *AlertService) ListAlerts(p *ListAlertsParams) (*ListAlertsResponse, error) {
-	var r, l ListAlertsResponse
+	var r ListAlertsResponse
 	for page := 2; ; page++ {
+		var l ListAlertsResponse
 		resp, err := s.cs.newRequest("listAlerts", p.toURLValues())
 		if err != nil {
 			return nil, err

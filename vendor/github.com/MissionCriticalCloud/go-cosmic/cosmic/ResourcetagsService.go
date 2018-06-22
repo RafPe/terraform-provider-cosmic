@@ -114,8 +114,9 @@ func (s *ResourcetagsService) GetStorageTagID(keyword string, opts ...OptionFunc
 
 // Lists storage tags
 func (s *ResourcetagsService) ListStorageTags(p *ListStorageTagsParams) (*ListStorageTagsResponse, error) {
-	var r, l ListStorageTagsResponse
+	var r ListStorageTagsResponse
 	for page := 2; ; page++ {
+		var l ListStorageTagsResponse
 		resp, err := s.cs.newRequest("listStorageTags", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -501,8 +502,9 @@ func (s *ResourcetagsService) NewListTagsParams() *ListTagsParams {
 
 // List resource tag(s)
 func (s *ResourcetagsService) ListTags(p *ListTagsParams) (*ListTagsResponse, error) {
-	var r, l ListTagsResponse
+	var r ListTagsResponse
 	for page := 2; ; page++ {
+		var l ListTagsResponse
 		resp, err := s.cs.newRequest("listTags", p.toURLValues())
 		if err != nil {
 			return nil, err

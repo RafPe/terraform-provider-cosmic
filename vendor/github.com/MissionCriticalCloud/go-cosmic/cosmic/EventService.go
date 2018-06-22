@@ -439,8 +439,9 @@ func (s *EventService) GetEventByID(id string, opts ...OptionFunc) (*Event, int,
 
 // A command to list events.
 func (s *EventService) ListEvents(p *ListEventsParams) (*ListEventsResponse, error) {
-	var r, l ListEventsResponse
+	var r ListEventsResponse
 	for page := 2; ; page++ {
+		var l ListEventsResponse
 		resp, err := s.cs.newRequest("listEvents", p.toURLValues())
 		if err != nil {
 			return nil, err

@@ -436,8 +436,9 @@ func (s *VMGroupService) GetInstanceGroupByID(id string, opts ...OptionFunc) (*I
 
 // Lists vm groups
 func (s *VMGroupService) ListInstanceGroups(p *ListInstanceGroupsParams) (*ListInstanceGroupsResponse, error) {
-	var r, l ListInstanceGroupsResponse
+	var r ListInstanceGroupsResponse
 	for page := 2; ; page++ {
+		var l ListInstanceGroupsResponse
 		resp, err := s.cs.newRequest("listInstanceGroups", p.toURLValues())
 		if err != nil {
 			return nil, err

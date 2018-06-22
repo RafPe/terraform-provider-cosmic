@@ -90,6 +90,6 @@ resource "cosmic_vpc" "foo" {
 resource "cosmic_vpn_gateway" "foo" {
   vpc_id = "${cosmic_vpc.foo.id}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)

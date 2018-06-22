@@ -645,8 +645,9 @@ func (s *FirewallService) GetEgressFirewallRuleByID(id string, opts ...OptionFun
 
 // Lists all egress firewall rules for network ID.
 func (s *FirewallService) ListEgressFirewallRules(p *ListEgressFirewallRulesParams) (*ListEgressFirewallRulesResponse, error) {
-	var r, l ListEgressFirewallRulesResponse
+	var r ListEgressFirewallRulesResponse
 	for page := 2; ; page++ {
+		var l ListEgressFirewallRulesResponse
 		resp, err := s.cs.newRequest("listEgressFirewallRules", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1271,8 +1272,9 @@ func (s *FirewallService) GetFirewallRuleByID(id string, opts ...OptionFunc) (*F
 
 // Lists all firewall rules for an IP address.
 func (s *FirewallService) ListFirewallRules(p *ListFirewallRulesParams) (*ListFirewallRulesResponse, error) {
-	var r, l ListFirewallRulesResponse
+	var r ListFirewallRulesResponse
 	for page := 2; ; page++ {
+		var l ListFirewallRulesResponse
 		resp, err := s.cs.newRequest("listFirewallRules", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1970,8 +1972,9 @@ func (s *FirewallService) GetPortForwardingRuleByID(id string, opts ...OptionFun
 
 // Lists all port forwarding rules for an IP address.
 func (s *FirewallService) ListPortForwardingRules(p *ListPortForwardingRulesParams) (*ListPortForwardingRulesResponse, error) {
-	var r, l ListPortForwardingRulesResponse
+	var r ListPortForwardingRulesResponse
 	for page := 2; ; page++ {
+		var l ListPortForwardingRulesResponse
 		resp, err := s.cs.newRequest("listPortForwardingRules", p.toURLValues())
 		if err != nil {
 			return nil, err

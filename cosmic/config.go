@@ -14,7 +14,7 @@ type Config struct {
 
 // NewClient returns a new Cosmic client.
 func (c *Config) NewClient() (*cosmic.CosmicClient, error) {
-	cs := cosmic.NewAsyncClient(c.APIURL, c.APIKey, c.SecretKey, false)
+	cs := cosmic.NewAsyncClient(c.APIURL, c.APIKey, c.SecretKey, nil, 60)
 	cs.HTTPGETOnly = c.HTTPGETOnly
 	cs.AsyncTimeout(c.Timeout)
 	return cs, nil

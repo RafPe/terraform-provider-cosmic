@@ -872,8 +872,9 @@ func (s *UserService) GetUserByID(id string, opts ...OptionFunc) (*User, int, er
 
 // Lists user accounts
 func (s *UserService) ListUsers(p *ListUsersParams) (*ListUsersResponse, error) {
-	var r, l ListUsersResponse
+	var r ListUsersResponse
 	for page := 2; ; page++ {
+		var l ListUsersResponse
 		resp, err := s.cs.newRequest("listUsers", p.toURLValues())
 		if err != nil {
 			return nil, err

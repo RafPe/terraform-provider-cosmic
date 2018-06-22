@@ -130,9 +130,9 @@ resource "cosmic_vpn_connection" "bar-foo" {
   customer_gateway_id = "${cosmic_vpn_customer_gateway.bar.id}"
   vpn_gateway_id = "${cosmic_vpn_gateway.foo.id}"
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE,
-	CLOUDSTACK_VPC_CIDR_2,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE,
+	COSMIC_VPC_CIDR_2,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)

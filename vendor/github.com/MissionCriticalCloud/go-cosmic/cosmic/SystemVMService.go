@@ -105,8 +105,6 @@ type ChangeServiceForSystemVmResponse struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`
@@ -202,8 +200,6 @@ type DestroySystemVmResponse struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`
@@ -310,8 +306,6 @@ type MigrateSystemVmResponse struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`
@@ -407,8 +401,6 @@ type RebootSystemVmResponse struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`
@@ -530,8 +522,6 @@ type ScaleSystemVmResponse struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`
@@ -627,8 +617,6 @@ type StartSystemVmResponse struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`
@@ -735,8 +723,6 @@ type StopSystemVmResponse struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`
@@ -974,8 +960,9 @@ func (s *SystemVMService) GetSystemVmByID(id string, opts ...OptionFunc) (*Syste
 
 // List system virtual machines.
 func (s *SystemVMService) ListSystemVms(p *ListSystemVmsParams) (*ListSystemVmsResponse, error) {
-	var r, l ListSystemVmsResponse
+	var r ListSystemVmsResponse
 	for page := 2; ; page++ {
+		var l ListSystemVmsResponse
 		resp, err := s.cs.newRequest("listSystemVms", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1012,8 +999,6 @@ type SystemVm struct {
 	Hostname             string `json:"hostname,omitempty"`
 	Hypervisor           string `json:"hypervisor,omitempty"`
 	Id                   string `json:"id,omitempty"`
-	Jobid                string `json:"jobid,omitempty"`
-	Jobstatus            int    `json:"jobstatus,omitempty"`
 	Linklocalip          string `json:"linklocalip,omitempty"`
 	Linklocalmacaddress  string `json:"linklocalmacaddress,omitempty"`
 	Linklocalnetmask     string `json:"linklocalnetmask,omitempty"`

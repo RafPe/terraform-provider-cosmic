@@ -364,8 +364,9 @@ func (s *ImageStoreService) GetImageStoreByID(id string, opts ...OptionFunc) (*I
 
 // Lists image stores.
 func (s *ImageStoreService) ListImageStores(p *ListImageStoresParams) (*ListImageStoresResponse, error) {
-	var r, l ListImageStoresResponse
+	var r ListImageStoresResponse
 	for page := 2; ; page++ {
+		var l ListImageStoresResponse
 		resp, err := s.cs.newRequest("listImageStores", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -744,8 +745,9 @@ func (s *ImageStoreService) GetSecondaryStagingStoreByID(id string, opts ...Opti
 
 // Lists secondary staging stores.
 func (s *ImageStoreService) ListSecondaryStagingStores(p *ListSecondaryStagingStoresParams) (*ListSecondaryStagingStoresResponse, error) {
-	var r, l ListSecondaryStagingStoresResponse
+	var r ListSecondaryStagingStoresResponse
 	for page := 2; ; page++ {
+		var l ListSecondaryStagingStoresResponse
 		resp, err := s.cs.newRequest("listSecondaryStagingStores", p.toURLValues())
 		if err != nil {
 			return nil, err

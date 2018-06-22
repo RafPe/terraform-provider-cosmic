@@ -248,9 +248,9 @@ resource "cosmic_network_acl_rule" "foo" {
     traffic_type = "ingress"
   }
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)
 
 var testAccCosmicNetworkACLRule_update = fmt.Sprintf(`
 resource "cosmic_vpc" "foobar" {
@@ -301,6 +301,6 @@ resource "cosmic_network_acl_rule" "foo" {
     traffic_type = "egress"
   }
 }`,
-	CLOUDSTACK_VPC_CIDR_1,
-	CLOUDSTACK_VPC_OFFERING,
-	CLOUDSTACK_ZONE)
+	COSMIC_VPC_CIDR_1,
+	COSMIC_VPC_OFFERING,
+	COSMIC_ZONE)

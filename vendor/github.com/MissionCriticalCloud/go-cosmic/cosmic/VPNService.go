@@ -506,8 +506,9 @@ func (s *VPNService) GetRemoteAccessVpnByID(id string, opts ...OptionFunc) (*Rem
 
 // Lists remote access vpns
 func (s *VPNService) ListRemoteAccessVpns(p *ListRemoteAccessVpnsParams) (*ListRemoteAccessVpnsResponse, error) {
-	var r, l ListRemoteAccessVpnsResponse
+	var r ListRemoteAccessVpnsResponse
 	for page := 2; ; page++ {
+		var l ListRemoteAccessVpnsResponse
 		resp, err := s.cs.newRequest("listRemoteAccessVpns", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1136,8 +1137,9 @@ func (s *VPNService) GetVpnConnectionByID(id string, opts ...OptionFunc) (*VpnCo
 
 // Lists site to site vpn connection gateways
 func (s *VPNService) ListVpnConnections(p *ListVpnConnectionsParams) (*ListVpnConnectionsResponse, error) {
-	var r, l ListVpnConnectionsResponse
+	var r ListVpnConnectionsResponse
 	for page := 2; ; page++ {
+		var l ListVpnConnectionsResponse
 		resp, err := s.cs.newRequest("listVpnConnections", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1889,8 +1891,9 @@ func (s *VPNService) GetVpnCustomerGatewayByID(id string, opts ...OptionFunc) (*
 
 // Lists site to site vpn customer gateways
 func (s *VPNService) ListVpnCustomerGateways(p *ListVpnCustomerGatewaysParams) (*ListVpnCustomerGatewaysResponse, error) {
-	var r, l ListVpnCustomerGatewaysResponse
+	var r ListVpnCustomerGatewaysResponse
 	for page := 2; ; page++ {
+		var l ListVpnCustomerGatewaysResponse
 		resp, err := s.cs.newRequest("listVpnCustomerGateways", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -2365,8 +2368,9 @@ func (s *VPNService) GetVpnGatewayByID(id string, opts ...OptionFunc) (*VpnGatew
 
 // Lists site 2 site vpn gateways
 func (s *VPNService) ListVpnGateways(p *ListVpnGatewaysParams) (*ListVpnGatewaysResponse, error) {
-	var r, l ListVpnGatewaysResponse
+	var r ListVpnGatewaysResponse
 	for page := 2; ; page++ {
+		var l ListVpnGatewaysResponse
 		resp, err := s.cs.newRequest("listVpnGateways", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -2780,8 +2784,9 @@ func (s *VPNService) GetVpnUserByID(id string, opts ...OptionFunc) (*VpnUser, in
 
 // Lists vpn users
 func (s *VPNService) ListVpnUsers(p *ListVpnUsersParams) (*ListVpnUsersResponse, error) {
-	var r, l ListVpnUsersResponse
+	var r ListVpnUsersResponse
 	for page := 2; ; page++ {
+		var l ListVpnUsersResponse
 		resp, err := s.cs.newRequest("listVpnUsers", p.toURLValues())
 		if err != nil {
 			return nil, err

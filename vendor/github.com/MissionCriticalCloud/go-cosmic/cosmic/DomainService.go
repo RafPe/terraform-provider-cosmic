@@ -539,8 +539,9 @@ func (s *DomainService) GetDomainChildrenByID(id string, opts ...OptionFunc) (*D
 
 // Lists all children domains belonging to a specified domain
 func (s *DomainService) ListDomainChildren(p *ListDomainChildrenParams) (*ListDomainChildrenResponse, error) {
-	var r, l ListDomainChildrenResponse
+	var r ListDomainChildrenResponse
 	for page := 2; ; page++ {
+		var l ListDomainChildrenResponse
 		resp, err := s.cs.newRequest("listDomainChildren", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -796,8 +797,9 @@ func (s *DomainService) GetDomainByID(id string, opts ...OptionFunc) (*Domain, i
 
 // Lists domains and provides detailed information for listed domains
 func (s *DomainService) ListDomains(p *ListDomainsParams) (*ListDomainsResponse, error) {
-	var r, l ListDomainsResponse
+	var r ListDomainsResponse
 	for page := 2; ; page++ {
+		var l ListDomainsResponse
 		resp, err := s.cs.newRequest("listDomains", p.toURLValues())
 		if err != nil {
 			return nil, err

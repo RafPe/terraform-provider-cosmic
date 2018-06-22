@@ -880,8 +880,9 @@ func (s *RouterService) GetRouterByID(id string, opts ...OptionFunc) (*Router, i
 
 // List routers.
 func (s *RouterService) ListRouters(p *ListRoutersParams) (*ListRoutersResponse, error) {
-	var r, l ListRoutersResponse
+	var r ListRoutersResponse
 	for page := 2; ; page++ {
+		var l ListRoutersResponse
 		resp, err := s.cs.newRequest("listRouters", p.toURLValues())
 		if err != nil {
 			return nil, err
@@ -1399,8 +1400,9 @@ func (s *RouterService) GetVirtualRouterElementByID(id string, opts ...OptionFun
 
 // Lists all available virtual router elements.
 func (s *RouterService) ListVirtualRouterElements(p *ListVirtualRouterElementsParams) (*ListVirtualRouterElementsResponse, error) {
-	var r, l ListVirtualRouterElementsResponse
+	var r ListVirtualRouterElementsResponse
 	for page := 2; ; page++ {
+		var l ListVirtualRouterElementsResponse
 		resp, err := s.cs.newRequest("listVirtualRouterElements", p.toURLValues())
 		if err != nil {
 			return nil, err

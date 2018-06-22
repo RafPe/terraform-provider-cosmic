@@ -294,8 +294,9 @@ func (s *RegionService) NewListRegionsParams() *ListRegionsParams {
 
 // Lists Regions
 func (s *RegionService) ListRegions(p *ListRegionsParams) (*ListRegionsResponse, error) {
-	var r, l ListRegionsResponse
+	var r ListRegionsResponse
 	for page := 2; ; page++ {
+		var l ListRegionsResponse
 		resp, err := s.cs.newRequest("listRegions", p.toURLValues())
 		if err != nil {
 			return nil, err
