@@ -3,7 +3,7 @@
 builds:
   -
     binary: terraform-provider-cosmic
-    ldflags: -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+    ldflags: -s -w
     goos:
       - windows
       - darwin
@@ -17,12 +17,8 @@ archive:
   format: binary
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
-release:
-  draft: true
-  prerelease: false
-  name_template: "{{.ProjectName}}-v{{.Version}}"
-changelog:
-  filters:
-    exclude:
-      - '^typo'
-      - 'version bump'
+brew:
+  # Repository to push the tap to.
+  github:
+    owner: RafPe
+    name: terraform-provider-cosmic
